@@ -43,6 +43,7 @@ public class UsersController {
     @PostMapping("/register/new")
     public String userRegistration(@Valid Users users, Model model){
 //        System.out.println(users);
+        //THIS CODE WAS NOT USED
         Optional<Users> optionalUsers = usersService.getUserByEmail(users.getEmail());
         if(optionalUsers.isPresent()){
             model.addAttribute("error", "Email already registered.");
@@ -51,8 +52,9 @@ public class UsersController {
             model.addAttribute("user", new Users());
             return "register";
         }
+        // TILL HEREEEEEE
         usersService.addNew(users);
-        return "dashboard";
+        return "redirect:/dashboard/";
     }
 
     @GetMapping("/login")
